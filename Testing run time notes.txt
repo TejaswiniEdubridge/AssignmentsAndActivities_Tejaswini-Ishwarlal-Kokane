@@ -1,0 +1,144 @@
+7 Principles of Software Testing
+
+Testing shows presence of defects
+Exhaustive testing is not possible
+Early testing
+Defect clustering
+Pesticide paradox
+Testing is context dependent
+Absence of errors fallacy
+
+
+Testing  Defination:
+Testing is a process of checking whether the software meets to the users requirement.
+Testing is used to check the quality of software.
+
+
+TDM:Data place in A IMP ROLE
+TEM:
+test Environt setup: Setting up H/w s/w network Conectivity Data setup.
+
+Test Bed: 
+Test environment with test Data
+
+Development environment:
+It will be tested by developer.Seperate module are their for each developer.
+With sample Data not using original data   
+               
+Test Environment: With sample Data not using original data we are doing.
+Here we use Several Diffent Setups or 
+Multiple environment setup takes place.QA analyst doing this
+(Analysing or cheking the quality of software QA calleds testrs)
+
+Staging Environment: Replica of live envrionemt or Production Envrionment.   
+Amount of Data is less.     We work with Original Data.                  
+This is done by Testor
+Production Environment:
+QA
+
+Key elements to do  Test envrinment Management:
+Test bed
+Database setup
+Setting up Exact test Data
+Envrionment Setup
+
+
+Smoke test
+Sanity 
+Exploratry testing
+Stress test
+Volume Testing
+Load Testing
+Usability Testing
+Monkey Testing
+Gorila Testing
+GUI Testing
+Fuzz testing
+
+
+
+
+
+
+
+Use case
+Interaction of user with the system
+
+
+
+
+New:Tester Foundany buf in s/w callednew 
+Assigned o development Team by mentioning open
+Opn 10accept not accept
+Fix Devevoper has to correct the code
+Retest Tester will do10fixed-closed 2)not fixed Accepting and if not accepting 
+Reopen 
+Duplicate Same tipe of bug and closed
+Deffered right not it not major problen it will be resolved developers tellstester
+Rejected  this is not a bug 
+
+
+
+
+
+
+JIRA is defect tracking(after assigning current status of defect) and managemetnt tool. (arranging and managing means not finding the defect,JIra does not do testing.)
+we use it in agile methodology
+agile methodology which is used to test and develop software.smimilar to waterfall model.
+
+Adons ands applications in JIRA-It will again retest.
+JIra does not do testing.With these we can also test the software.
+Story -The documetnis called story i.e description. users requirementis called story,SRS also called story.
+sprint-Iteration
+epic-versions ,number of versions
+scrum master is project manager scrukm means yoour project/Framework
+Scrum meetings -Everybody in meetings called scrum meeting
+backlog-mainting the report Backlog/{roduct backlog is a story story means user requirement/Information about current or previous sprint
+
+Sprint terospective GIves feedback at the end of sprint
+
+Product Owner-CUstomer
+
+Working principll if agile is iterative 
+
+
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,694 @@
+Microsoft Windows [Version 10.0.19043.2006]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\Windows\system32>mysql -u root -p
+Enter password: *********
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 18
+Server version: 8.0.30 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2022, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> use student;
+Database changed
+mysql> insert into stuedubridge values(01, 'Anna', 'Testing');
+Query OK, 1 row affected (0.15 sec)
+
+mysql> insert into stuedubridge values(02, 'Alice', 'AptitudeSkills');
+Query OK, 1 row affected (0.04 sec)
+
+mysql> insert into stuedubridge values(03, 'Emma', 'CommunicationSkills');
+Query OK, 1 row affected (0.11 sec)
+
+mysql> insert into stuedubridge values(04, 'Sophia', 'Bootstrap');
+Query OK, 1 row affected (0.04 sec)
+
+mysql> select * from stuedubridge;
++---------+-----------+---------------------+
+| roll_No | Name      | Subject             |
++---------+-----------+---------------------+
+|       1 | Tejaswini | Software_testing    |
+|       1 | Anna      | Testing             |
+|       2 | Alice     | AptitudeSkills      |
+|       3 | Emma      | CommunicationSkills |
+|       4 | Sophia    | Bootstrap           |
++---------+-----------+---------------------+
+5 rows in set (0.00 sec)
+
+mysql> Delete from stuedubridge WHERE Name='Tejaswini';
+Query OK, 1 row affected (0.10 sec)
+
+mysql> select * from stuedubridge;
++---------+--------+---------------------+
+| roll_No | Name   | Subject             |
++---------+--------+---------------------+
+|       1 | Anna   | Testing             |
+|       2 | Alice  | AptitudeSkills      |
+|       3 | Emma   | CommunicationSkills |
+|       4 | Sophia | Bootstrap           |
++---------+--------+---------------------+
+4 rows in set (0.00 sec)
+
+mysql> update stuedubridge SET Subject='SoftwareTesting' WHERE roll_No=1;
+Query OK, 1 row affected (0.06 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from stuedubridge;
++---------+--------+---------------------+
+| roll_No | Name   | Subject             |
++---------+--------+---------------------+
+|       1 | Anna   | SoftwareTesting     |
+|       2 | Alice  | AptitudeSkills      |
+|       3 | Emma   | CommunicationSkills |
+|       4 | Sophia | Bootstrap           |
++---------+--------+---------------------+
+4 rows in set (0.00 sec)
+
+mysql> Alter table stuedubridge ADD City varchar(25);
+Query OK, 0 rows affected (0.40 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> select * from stuedubridge;
++---------+--------+---------------------+------+
+| roll_No | Name   | Subject             | City |
++---------+--------+---------------------+------+
+|       1 | Anna   | SoftwareTesting     | NULL |
+|       2 | Alice  | AptitudeSkills      | NULL |
+|       3 | Emma   | CommunicationSkills | NULL |
+|       4 | Sophia | Bootstrap           | NULL |
++---------+--------+---------------------+------+
+4 rows in set (0.00 sec)
+
+mysql> Alter table stuedubridge DROP COLUMN City;
+Query OK, 0 rows affected (0.07 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> select * from stuedubridge;
++---------+--------+---------------------+
+| roll_No | Name   | Subject             |
++---------+--------+---------------------+
+|       1 | Anna   | SoftwareTesting     |
+|       2 | Alice  | AptitudeSkills      |
+|       3 | Emma   | CommunicationSkills |
+|       4 | Sophia | Bootstrap           |
++---------+--------+---------------------+
+4 rows in set (0.00 sec)
+
+mysql> Alter table stuedubridge RENAME TO Stu_Edubridge;
+Query OK, 0 rows affected (0.14 sec)
+
+mysql> select * from Stu_Edubridge;
++---------+--------+---------------------+
+| roll_No | Name   | Subject             |
++---------+--------+---------------------+
+|       1 | Anna   | SoftwareTesting     |
+|       2 | Alice  | AptitudeSkills      |
+|       3 | Emma   | CommunicationSkills |
+|       4 | Sophia | Bootstrap           |
++---------+--------+---------------------+
+4 rows in set (0.03 sec)
+
+mysql> insert into stuedubridge values(05, 'Zoe', 'SoftwareTesting');
+ERROR 1146 (42S02): Table 'student.stuedubridge' doesn't exist
+mysql> insert into Stu_Edubridge values(05, 'Zoe', 'SoftwareTesting');
+Query OK, 1 row affected (0.04 sec)
+
+mysql> select * from Stu_Edubridge;
++---------+--------+---------------------+
+| roll_No | Name   | Subject             |
++---------+--------+---------------------+
+|       1 | Anna   | SoftwareTesting     |
+|       2 | Alice  | AptitudeSkills      |
+|       3 | Emma   | CommunicationSkills |
+|       4 | Sophia | Bootstrap           |
+|       5 | Zoe    | SoftwareTesting     |
++---------+--------+---------------------+
+5 rows in set (0.00 sec)
+
+mysql> Select DISTINCT Subject from Stu_Edubridge;
++---------------------+
+| Subject             |
++---------------------+
+| SoftwareTesting     |
+| AptitudeSkills      |
+| CommunicationSkills |
+| Bootstrap           |
++---------------------+
+4 rows in set (0.08 sec)
+
+mysql> Select Name, COUNT(*) from Stu_Edubridge GROUP BY subject;
++--------+----------+
+| Name   | COUNT(*) |
++--------+----------+
+| Anna   |        2 |
+| Alice  |        1 |
+| Emma   |        1 |
+| Sophia |        1 |
++--------+----------+
+4 rows in set (0.04 sec)
+
+mysql> Select roll_No, COUNT(*) from Stu_Edubridge GROUP BY subject;
++---------+----------+
+| roll_No | COUNT(*) |
++---------+----------+
+|       1 |        2 |
+|       2 |        1 |
+|       3 |        1 |
+|       4 |        1 |
++---------+----------+
+4 rows in set (0.01 sec)
+
+mysql> Select COUNT(*) from Stu_Edubridge;
++----------+
+| COUNT(*) |
++----------+
+|        5 |
++----------+
+1 row in set (0.45 sec)
+
+mysql> Select COUNT(Name) from Stu_Edubridge;
++-------------+
+| COUNT(Name) |
++-------------+
+|           5 |
++-------------+
+1 row in set (1.27 sec)
+
+mysql> Select COUNT(*) from Stu_Edubridge WHERE Subject='SoftwareTesting';
++----------+
+| COUNT(*) |
++----------+
+|        2 |
++----------+
+1 row in set (0.31 sec)
+
+mysql> Select COUNT(DISTINCT Subject) From Stu_Edubridge;
++-------------------------+
+| COUNT(DISTINCT Subject) |
++-------------------------+
+|                       4 |
++-------------------------+
+1 row in set (0.23 sec)
+
+mysql> Select * from Stu_Edubridge;
++---------+--------+---------------------+
+| roll_No | Name   | Subject             |
++---------+--------+---------------------+
+|       1 | Anna   | SoftwareTesting     |
+|       2 | Alice  | AptitudeSkills      |
+|       3 | Emma   | CommunicationSkills |
+|       4 | Sophia | Bootstrap           |
+|       5 | Zoe    | SoftwareTesting     |
++---------+--------+---------------------+
+5 rows in set (0.07 sec)
+
+mysql> Select * from Stu_Edubridge WHERE Subject='SoftwareTesting' ORDER BY Name ASC;
++---------+------+-----------------+
+| roll_No | Name | Subject         |
++---------+------+-----------------+
+|       1 | Anna | SoftwareTesting |
+|       5 | Zoe  | SoftwareTesting |
++---------+------+-----------------+
+2 rows in set (0.18 sec)
+
+mysql> Select * from Stu_Edubridge WHERE Subject='SoftwareTesting' ORDER BY Name DESC;
++---------+------+-----------------+
+| roll_No | Name | Subject         |
++---------+------+-----------------+
+|       5 | Zoe  | SoftwareTesting |
+|       1 | Anna | SoftwareTesting |
++---------+------+-----------------+
+2 rows in set (0.06 sec)
+
+mysql> Select Name, Subject from Stu_Edubridge Where roll_No < 5
+    -> ORDER BY Name DESC, Subject ASC;
++--------+---------------------+
+| Name   | Subject             |
++--------+---------------------+
+| Sophia | Bootstrap           |
+| Emma   | CommunicationSkills |
+| Anna   | SoftwareTesting     |
+| Alice  | AptitudeSkills      |
++--------+---------------------+
+4 rows in set (0.05 sec)
+
+mysql> Select Name from Stu_Edubridge LIMIT 1;
++------+
+| Name |
++------+
+| Anna |
++------+
+1 row in set (0.05 sec)
+
+mysql> Select * from Stu_Edubridge;
++---------+--------+---------------------+
+| roll_No | Name   | Subject             |
++---------+--------+---------------------+
+|       1 | Anna   | SoftwareTesting     |
+|       2 | Alice  | AptitudeSkills      |
+|       3 | Emma   | CommunicationSkills |
+|       4 | Sophia | Bootstrap           |
+|       5 | Zoe    | SoftwareTesting     |
++---------+--------+---------------------+
+5 rows in set (0.00 sec)
+
+mysql> insert into stuedubridge values(06, 'Anna', 'SoftwareTesting');
+ERROR 1146 (42S02): Table 'student.stuedubridge' doesn't exist
+mysql> insert into Stu_Edubridge values(06, 'Anna', 'SoftwareTesting');
+Query OK, 1 row affected (0.59 sec)
+
+mysql> Select * from Stu_Edubridge;
++---------+--------+---------------------+
+| roll_No | Name   | Subject             |
++---------+--------+---------------------+
+|       1 | Anna   | SoftwareTesting     |
+|       2 | Alice  | AptitudeSkills      |
+|       3 | Emma   | CommunicationSkills |
+|       4 | Sophia | Bootstrap           |
+|       5 | Zoe    | SoftwareTesting     |
+|       6 | Anna   | SoftwareTesting     |
++---------+--------+---------------------+
+6 rows in set (0.00 sec)
+
+mysql> SELECT * from Stu_Edubridge WHERE Name='Anna'AND Subject='SoftwareTesting';
++---------+------+-----------------+
+| roll_No | Name | Subject         |
++---------+------+-----------------+
+|       1 | Anna | SoftwareTesting |
+|       6 | Anna | SoftwareTesting |
++---------+------+-----------------+
+2 rows in set (0.04 sec)
+
+mysql> SELECT * from Stu_Edubridge WHERE Name='Anna' OR Subject='SoftwareTesting';
++---------+------+-----------------+
+| roll_No | Name | Subject         |
++---------+------+-----------------+
+|       1 | Anna | SoftwareTesting |
+|       5 | Zoe  | SoftwareTesting |
+|       6 | Anna | SoftwareTesting |
++---------+------+-----------------+
+3 rows in set (0.00 sec)
+
+mysql> Select * from Stu_Edubridge Where NOT Subject='SoftwareTesting';
++---------+--------+---------------------+
+| roll_No | Name   | Subject             |
++---------+--------+---------------------+
+|       2 | Alice  | AptitudeSkills      |
+|       3 | Emma   | CommunicationSkills |
+|       4 | Sophia | Bootstrap           |
++---------+--------+---------------------+
+3 rows in set (0.03 sec)
+
+mysql>
+
+
+
+
+
+
+mysql> create table Sales(saleID int(20), Product varchar(20), CustomerID int(20), Price int(20))
+    -> ;
+Query OK, 0 rows affected, 3 warnings (0.85 sec)
+
+mysql> create table Customers(CustomerID int(20), Name varchar(20), Address varchar(20))
+    -> ;
+Query OK, 0 rows affected, 1 warning (0.22 sec)
+
+mysql> Insert into Sales values(1, 'cars', 02, 2000);
+Query OK, 1 row affected (0.13 sec)
+
+mysql> Insert into Sales values(2, 'Furniture', 04, 4000);
+Query OK, 1 row affected (0.05 sec)
+
+mysql> Insert into Customers values(1, 'Deepika', 'Delhi');
+Query OK, 1 row affected (0.06 sec)
+
+mysql> Insert into Customers values(2, 'Reva', 'Hariyana');
+Query OK, 1 row affected (0.04 sec)
+
+mysql> Select * from Sales;
++--------+-----------+------------+-------+
+| saleID | Product   | CustomerID | Price |
++--------+-----------+------------+-------+
+|      1 | cars      |          2 |  2000 |
+|      2 | Furniture |          4 |  4000 |
++--------+-----------+------------+-------+
+2 rows in set (0.04 sec)
+
+mysql> Select * from Customers;
++------------+---------+----------+
+| CustomerID | Name    | Address  |
++------------+---------+----------+
+|          1 | Deepika | Delhi    |
+|          2 | Reva    | Hariyana |
++------------+---------+----------+
+2 rows in set (0.00 sec)
+
+mysql> Select Sales.saleID, Customers.Name
+    -> from Sales
+    -> INNER JOIN Customers ON Sales.CustomerID=Customers.CustomerID;
++--------+------+
+| saleID | Name |
++--------+------+
+|      1 | Reva |
++--------+------+
+1 row in set (0.00 sec)
+
+mysql> Select Sales.saleID, Sales.Product, Customers.Name
+    -> from Sales
+    -> INNER JOIN Customers ON Sales.CustomerID=Customers.CustomerID;
++--------+---------+------+
+| saleID | Product | Name |
++--------+---------+------+
+|      1 | cars    | Reva |
++--------+---------+------+
+1 row in set (0.00 sec)
+
+mysql> Select Sales.saleID,Sales.Product, Customers.Name
+    -> from Sales
+    -> LEFT JOIN Customers ON Sales.CustomerID=Customers.CustomerID;
++--------+-----------+------+
+| saleID | Product   | Name |
++--------+-----------+------+
+|      1 | cars      | Reva |
+|      2 | Furniture | NULL |
++--------+-----------+------+
+2 rows in set (0.00 sec)
+
+mysql> Select * from Sales;
++--------+-----------+------------+-------+
+| saleID | Product   | CustomerID | Price |
++--------+-----------+------------+-------+
+|      1 | cars      |          2 |  2000 |
+|      2 | Furniture |          4 |  4000 |
++--------+-----------+------------+-------+
+2 rows in set (0.00 sec)
+
+mysql> Select * from Customers;
++------------+---------+----------+
+| CustomerID | Name    | Address  |
++------------+---------+----------+
+|          1 | Deepika | Delhi    |
+|          2 | Reva    | Hariyana |
++------------+---------+----------+
+2 rows in set (0.00 sec)
+
+mysql> Select Sales.saleID,Sales.Product, Customers.Name
+    -> from Sales
+    -> RIGHT JOIN Customers ON Sales.CustomerID=Customers.CustomerID;
++--------+---------+---------+
+| saleID | Product | Name    |
++--------+---------+---------+
+|   NULL | NULL    | Deepika |
+|      1 | cars    | Reva    |
++--------+---------+---------+
+2 rows in set (0.00 sec)
+
+
+mysql> Select CustomerID from Sales
+    -> UNION
+    -> Select CustomerID from Customers;
++------------+
+| CustomerID |
++------------+
+|          2 |
+|          4 |
+|          1 |
++------------+
+3 rows in set (0.03 sec)
+
+mysql>
+mysql> Select * from Sales
+    -> Left JOIN Customers ON(Sales.SaleID,Sales.Product,Sales.Price)=(Customers.CustomerID,CUstomers.Name,Customers.Address)
+    -> UNION
+    -> Select * From Sales
+    -> RIGHT Join Customers ON(Sales.SaleID,Sales.Product,Sales.Price)=(Customers.CUstomerID,Customers.Name,Customers.Address);
++--------+-----------+------------+-------+------------+---------+----------+
+| saleID | Product   | CustomerID | Price | CustomerID | Name    | Address  |
++--------+-----------+------------+-------+------------+---------+----------+
+|      1 | cars      |          2 |  2000 |       NULL | NULL    | NULL     |
+|      2 | Furniture |          4 |  4000 |       NULL | NULL    | NULL     |
+|   NULL | NULL      |       NULL |  NULL |          1 | Deepika | Delhi    |
+|   NULL | NULL      |       NULL |  NULL |          2 | Reva    | Hariyana |
++--------+-----------+------------+-------+------------+---------+----------+
+4 rows in set, 4 warnings (0.17 sec)
+
+mysql>
+
+
+
+
+
+
+mysql> use student;
+Database changed
+mysql> Select * from customers;
++------------+----------+----------+
+| CustomerID | Name     | Address  |
++------------+----------+----------+
+|          1 | Sherlock | Delhi    |
+|          2 | Reva     | Hariyana |
++------------+----------+----------+
+2 rows in set (0.08 sec)
+
+mysql> Start Transaction;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> insert into customers values(3,'Amit','Punjab'),(4,'Manish','India'),(5,'Ankit','Shimla');
+Query OK, 3 rows affected (0.05 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+mysql> Select * from Customers;
++------------+----------+----------+
+| CustomerID | Name     | Address  |
++------------+----------+----------+
+|          1 | Sherlock | Delhi    |
+|          2 | Reva     | Hariyana |
+|          3 | Amit     | Punjab   |
+|          4 | Manish   | India    |
+|          5 | Ankit    | Shimla   |
++------------+----------+----------+
+5 rows in set (0.00 sec)
+
+mysql> Commit;
+Query OK, 0 rows affected (0.04 sec)
+
+mysql> Select * from Customers;
++------------+----------+----------+
+| CustomerID | Name     | Address  |
++------------+----------+----------+
+|          1 | Sherlock | Delhi    |
+|          2 | Reva     | Hariyana |
+|          3 | Amit     | Punjab   |
+|          4 | Manish   | India    |
+|          5 | Ankit    | Shimla   |
++------------+----------+----------+
+5 rows in set (0.00 sec)
+
+
+
+mysql> use student;
+Database changed
+mysql> select * from customers;
++------------+----------+----------+
+| CustomerID | Name     | Address  |
++------------+----------+----------+
+|          1 | Sherlock | Delhi    |
+|          2 | Reva     | Hariyana |
+|          3 | Amit     | Punjab   |
+|          4 | Manish   | India    |
+|          5 | Ankit    | Shimla   |
++------------+----------+----------+
+5 rows in set (0.05 sec)
+
+mysql> Start Transaction;
+Query OK, 0 rows affected (0.00 sec)
+
+
+mysql> Update customers SET Name='Anshu' Where CustomerID=1;
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> Insert into customers values(6,'Deepak','WestIndies');
+Query OK, 1 row affected (0.00 sec)
+
+
+mysql> Delete from customers Where CustomerID=2;
+Query OK, 1 row affected (0.03 sec)
+
+mysql> Select * from Customers;
++------------+--------+------------+
+| CustomerID | Name   | Address    |
++------------+--------+------------+
+|          1 | Anshu  | Delhi      |
+|          3 | Amit   | Punjab     |
+|          4 | Manish | India      |
+|          5 | Ankit  | Shimla     |
+|          6 | Deepak | WestIndies |
++------------+--------+------------+
+5 rows in set (0.00 sec)
+
+mysql> Rollback;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> Select * from Customers;
++------------+----------+----------+
+| CustomerID | Name     | Address  |
++------------+----------+----------+
+|          1 | Sherlock | Delhi    |
+|          2 | Reva     | Hariyana |
+|          3 | Amit     | Punjab   |
+|          4 | Manish   | India    |
+|          5 | Ankit    | Shimla   |
++------------+----------+----------+
+5 rows in set (0.00 sec)
+
+mysql> Commit;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> Rollback;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> Select * from Customers;
++------------+----------+----------+
+| CustomerID | Name     | Address  |
++------------+----------+----------+
+|          1 | Sherlock | Delhi    |
+|          2 | Reva     | Hariyana |
+|          3 | Amit     | Punjab   |
+|          4 | Manish   | India    |
+|          5 | Ankit    | Shimla   |
++------------+----------+----------+
+5 rows in set (0.00 sec)
+
+mysql> Savepoint upd;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> Delete from customers where CustomerID=4;
+Query OK, 1 row affected (0.06 sec)
+
+mysql> Savepoint del;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> Select * from customers;
++------------+----------+----------+
+| CustomerID | Name     | Address  |
++------------+----------+----------+
+|          1 | Sherlock | Delhi    |
+|          2 | Reva     | Hariyana |
+|          3 | Amit     | Punjab   |
+|          5 | Ankit    | Shimla   |
++------------+----------+----------+
+4 rows in set (0.00 sec)
+
+
+mysql> use student;
+Database changed
+mysql> Create table Product(Name Varchar(50), Price int(50));
+Query OK, 0 rows affected, 1 warning (4.92 sec)
+
+mysql> insert into product values('Shivani',15),('Appi',30),('Raja',45),('Dheeraj',60),('kumar',75);
+Query OK, 5 rows affected (0.47 sec)
+Records: 5  Duplicates: 0  Warnings: 0
+
+
+mysql> select * from product;
++---------+-------+
+| Name    | Price |
++---------+-------+
+| Shivani |    15 |
+| Appi    |    30 |
+| Raja    |    45 |
+| Dheeraj |    60 |
+| kumar   |    75 |
++---------+-------+
+5 rows in set (0.06 sec)
+
+
+mysql> Select MIN(Price) as smallestprice from product;
++---------------+
+| smallestprice |
++---------------+
+|            15 |
++---------------+
+1 row in set (0.07 sec)
+
+mysql> Select MAX(Price) as largestprice from product;
++--------------+
+| largestprice |
++--------------+
+|           75 |
++--------------+
+1 row in set (0.00 sec)
+
+mysql> Select Price , CASE When price>30 then 'Price is greater than 30' When price =30 then 'price equal to 30' else 'price is under 30' END as pricetext from product;
++-------+--------------------------+
+| Price | pricetext                |
++-------+--------------------------+
+|    15 | price is under 30        |
+|    30 | price equal to 30        |
+|    45 | Price is greater than 30 |
+|    60 | Price is greater than 30 |
+|    75 | Price is greater than 30 |
++-------+--------------------------+
+5 rows in set (0.08 sec)
+
+mysql> Select * from product where Name like 'ku%';
++-------+-------+
+| Name  | Price |
++-------+-------+
+| kumar |    75 |
++-------+-------+
+1 row in set (0.48 sec)
+
+mysql>
+
+mysql> Select * from product where price between 45 AND 75;
++---------+-------+
+| Name    | Price |
++---------+-------+
+| Raja    |    45 |
+| Dheeraj |    60 |
+| kumar   |    75 |
++---------+-------+
+3 rows in set (0.00 sec)
+
+
+mysql> select * from customers;
++------------+----------+----------+
+| CustomerID | Name     | Address  |
++------------+----------+----------+
+|          1 | Sherlock | Delhi    |
+|          2 | Reva     | Hariyana |
+|          3 | Amit     | Punjab   |
+|          5 | Ankit    | Shimla   |
++------------+----------+----------+
+4 rows in set (0.10 sec)
+
+mysql> Select * from customers where Name LIKE 'A%';
++------------+-------+---------+
+| CustomerID | Name  | Address |
++------------+-------+---------+
+|          3 | Amit  | Punjab  |
+|          5 | Ankit | Shimla  |
++------------+-------+---------+
+2 rows in set (0.00 sec)
+
+
+
+
+
+
+
+
+
+
+
+
+

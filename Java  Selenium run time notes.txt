@@ -1,0 +1,71 @@
+https://www.toolsqa.com/selenium-webdriver/selenium-tutorial/
+
+http://cdn.edubridgeindia.com/resources/Software-Testing-PG/Module12.pdf
+
+Data types
+BOolean
+byte
+short
+int
+long
+double
+float
+char
+
+System.out.println= out is object system is a keyword
+
+5-:2 = 2
+5/2 =1
+
+typecsting
+
+instead of using if else we can use ternery operator
+ternary operator also called short hand if else
+Swith case
+if else, else if
+While loop first check conditions
+do while do things then checks condition
+
+For(Initialisation, condition,iteration)
+n number of nested loops we can use
+for each loop
+break
+continue
+
+Calling and invoking is same
+Method is staic call directely when public then create objet then call
+
+
+
+Assignment operator =
+Arithmatic operators + - * / %
+Unary operator + - ++ -- !
+Equality and relational operator == != < > <= >=
+Instance of operator 
+Logical operator || &&
+Ternary Operator (Short hand if else)
+Bitwise and bit shift operator
+
+
+selenium is used for Automation testing automation scripts
+x-Path
+"//" means Select current path
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

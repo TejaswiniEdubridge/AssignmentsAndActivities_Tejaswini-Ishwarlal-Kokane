@@ -1,0 +1,15 @@
+JMeter
+
+1.JMeter is free 
+2.JMeter licenses on installation 
+3.JMeter has an unlimited load generation capacity 
+4.JMeter is technically less proficient 
+5.JMeter lacks in the user interface 
+
+
+LoadRunner
+1.LoadRunner is expensive.
+2.LoadRunner license is based on the number of virtual users.
+3.LoadRunner has a limited load generation capacity.
+4.LoadRunner is highly developed and complex.
+5.LoadRunner is impressive.
